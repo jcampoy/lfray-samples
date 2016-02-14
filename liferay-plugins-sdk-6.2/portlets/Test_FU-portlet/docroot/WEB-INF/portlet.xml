@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+
+<portlet-app xmlns="http://java.sun.com/xml/ns/portlet/portlet-app_2_0.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/portlet/portlet-app_2_0.xsd http://java.sun.com/xml/ns/portlet/portlet-app_2_0.xsd" version="2.0">
+	<portlet>
+		<portlet-name>Test_FU</portlet-name>
+		<display-name>Test FU</display-name>
+		<portlet-class>com.test.Controller</portlet-class>
+		<init-param>
+			<name>view-template</name> <!-- new view.jsp -->
+			<value>/html/view.jsp</value>
+		</init-param>
+		<init-param> <!-- mandatory to enable friendlyURL in action phase -->
+			<name>check-auth-token</name>
+			<value>false</value>
+		</init-param>
+		<init-param> <!-- copy parameters from action to render phase -->
+			<name>copy-request-parameters</name>
+			<value>true</value>
+		</init-param>
+		<expiration-cache>0</expiration-cache>
+		<supports>
+			<mime-type>text/html</mime-type>
+		</supports>
+		<portlet-info>
+			<title>Test FU</title>
+			<short-title>Test FU</short-title>
+			<keywords>Test FU</keywords>
+		</portlet-info>
+		<security-role-ref>
+			<role-name>administrator</role-name>
+		</security-role-ref>
+		<security-role-ref>
+			<role-name>guest</role-name>
+		</security-role-ref>
+		<security-role-ref>
+			<role-name>power-user</role-name>
+		</security-role-ref>
+		<security-role-ref>
+			<role-name>user</role-name>
+		</security-role-ref>
+	</portlet>
+</portlet-app>
