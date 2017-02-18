@@ -129,6 +129,10 @@ public class FooLocalServiceClp implements FooLocalService {
 		_methodName21 = "setBeanIdentifier";
 
 		_methodParameterTypes21 = new String[] { "java.lang.String" };
+
+		_methodName23 = "listFoos";
+
+		_methodParameterTypes23 = new String[] { "int", "int" };
 	}
 
 	@Override
@@ -807,6 +811,35 @@ public class FooLocalServiceClp implements FooLocalService {
 		throw new UnsupportedOperationException();
 	}
 
+	@Override
+	public java.util.List<com.liferay.sampleservicebuilder.model.Foo> listFoos(
+		int start, int end)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		try {
+			returnObj = _invokableLocalService.invokeMethod(_methodName23,
+					_methodParameterTypes23, new Object[] { start, end });
+		}
+		catch (Throwable t) {
+			t = ClpSerializer.translateThrowable(t);
+
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return (java.util.List<com.liferay.sampleservicebuilder.model.Foo>)ClpSerializer.translateOutput(returnObj);
+	}
+
 	private InvokableLocalService _invokableLocalService;
 	private String _methodName0;
 	private String[] _methodParameterTypes0;
@@ -852,4 +885,6 @@ public class FooLocalServiceClp implements FooLocalService {
 	private String[] _methodParameterTypes20;
 	private String _methodName21;
 	private String[] _methodParameterTypes21;
+	private String _methodName23;
+	private String[] _methodParameterTypes23;
 }
