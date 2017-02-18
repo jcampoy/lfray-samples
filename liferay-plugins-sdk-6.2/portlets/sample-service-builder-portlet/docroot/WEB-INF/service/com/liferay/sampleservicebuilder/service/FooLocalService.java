@@ -322,5 +322,6 @@ public interface FooLocalService extends BaseLocalService, InvokableLocalService
 	* @return the range of foos
 	* @throws SystemException if a system exception occurred
 	*/
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public List<Foo> listFoos(int start, int end) throws SystemException;
 }
