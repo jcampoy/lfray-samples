@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+
+<deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+	<service name="Plugin_WebServiceSample_LogService" provider="java:RPC" style="rpc" use="encoded">
+		<operation xmlns:operNS="urn:http.service.samples.liferay.jcampoy.com" name="debug" qname="operNS:debug" soapAction="">
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="msg" type="tns:string"></parameter>
+		</operation>
+		<operation xmlns:operNS="urn:http.service.samples.liferay.jcampoy.com" name="fatal" qname="operNS:fatal" soapAction="">
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="msg" type="tns:string"></parameter>
+		</operation>
+		<operation xmlns:operNS="urn:http.service.samples.liferay.jcampoy.com" name="info" qname="operNS:info" soapAction="">
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="msg" type="tns:string"></parameter>
+		</operation>
+		<operation xmlns:operNS="urn:http.service.samples.liferay.jcampoy.com" name="trace" qname="operNS:trace" soapAction="">
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="msg" type="tns:string"></parameter>
+		</operation>
+		<operation xmlns:operNS="urn:http.service.samples.liferay.jcampoy.com" name="warn" qname="operNS:warn" soapAction="">
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="msg" type="tns:string"></parameter>
+		</operation>
+		<parameter name="allowedMethods" value="debug fatal info trace warn" />
+		<parameter name="className" value="com.jcampoy.liferay.samples.service.http.LogServiceSoap" />
+		<parameter name="typeMappingVersion" value="1.2" />
+		<parameter name="wsdlPortType" value="LogServiceSoap" />
+		<parameter name="wsdlServiceElement" value="LogServiceSoapService" />
+		<parameter name="wsdlServicePort" value="Plugin_WebServiceSample_LogService" />
+		<parameter name="wsdlTargetNamespace" value="urn:http.service.samples.liferay.jcampoy.com" />
+	</service>
+</deployment>
