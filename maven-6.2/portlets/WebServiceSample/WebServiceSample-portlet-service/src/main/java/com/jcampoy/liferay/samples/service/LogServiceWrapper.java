@@ -44,6 +44,31 @@ public class LogServiceWrapper implements LogService,
         return _logService.invokeMethod(name, parameterTypes, arguments);
     }
 
+    @Override
+    public void debug(java.lang.String msg) {
+        _logService.debug(msg);
+    }
+
+    @Override
+    public void fatal(java.lang.String msg) {
+        _logService.fatal(msg);
+    }
+
+    @Override
+    public void info(java.lang.String msg) {
+        _logService.info(msg);
+    }
+
+    @Override
+    public void warn(java.lang.String msg) {
+        _logService.warn(msg);
+    }
+
+    @Override
+    public void trace(java.lang.String msg) {
+        _logService.trace(msg);
+    }
+
     /**
      * @deprecated As of 6.1.0, replaced by {@link #getWrappedService}
      */

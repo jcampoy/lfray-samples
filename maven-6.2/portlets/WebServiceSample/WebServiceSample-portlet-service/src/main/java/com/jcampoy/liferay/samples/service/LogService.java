@@ -50,4 +50,14 @@ public interface LogService extends BaseService, InvokableService {
     public java.lang.Object invokeMethod(java.lang.String name,
         java.lang.String[] parameterTypes, java.lang.Object[] arguments)
         throws java.lang.Throwable;
+
+    public void debug(java.lang.String msg);
+
+    public void fatal(java.lang.String msg);
+
+    public void info(java.lang.String msg);
+
+    public void warn(java.lang.String msg);
+
+    public void trace(java.lang.String msg);
 }

@@ -51,6 +51,26 @@ public class LogServiceUtil {
         return getService().invokeMethod(name, parameterTypes, arguments);
     }
 
+    public static void debug(java.lang.String msg) {
+        getService().debug(msg);
+    }
+
+    public static void fatal(java.lang.String msg) {
+        getService().fatal(msg);
+    }
+
+    public static void info(java.lang.String msg) {
+        getService().info(msg);
+    }
+
+    public static void warn(java.lang.String msg) {
+        getService().warn(msg);
+    }
+
+    public static void trace(java.lang.String msg) {
+        getService().trace(msg);
+    }
+
     public static void clearService() {
         _service = null;
     }
