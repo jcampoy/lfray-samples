@@ -1,5 +1,8 @@
 package com.jcampoy.liferay.samples.wsclient.portlet;
 
+import com.jcampoy.liferay.samples.service.http.LogServiceSoap;
+import com.jcampoy.liferay.samples.service.http.LogServiceSoapServiceLocator;
+import com.jcampoy.liferay.samples.wsclient.WebServiceClientUtil;
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
 import com.liferay.portal.kernel.servlet.SessionErrors;
@@ -39,20 +42,50 @@ public class WebServiceClientPortlet extends MVCPortlet {
 				String message =
 					ParamUtil.getString(actionRequest, "logmessage", "");
 
+				String remoteUser =
+						ParamUtil.getString(actionRequest, "user", "");
+				String password =
+						ParamUtil.getString(actionRequest, "password", "");
+
 				if(!message.equals("")){
 					if (_log.isDebugEnabled()) {
 						_log.debug("Calling LogService with message: " + message);
 					}
 		
+					LogServiceSoapServiceLocator locator =
+						new LogServiceSoapServiceLocator();
+
+					LogServiceSoap logService =
+						locator.getPlugin_WebServiceSample_LogService(WebServiceClientUtil.getWebServiceSampleURL(remoteUser, password, true));
+
+					logService.info(message);
+
 					SessionMessages.add(actionRequest, "success");
 				}
 				else {
-					SessionMessages.add(actionRequest, "empty-log-message");
+					if (message.equals("")) {
+						SessionMessages.add(actionRequest, "empty-log-message");
+					}
+					if (remoteUser.equals("")) {
+						SessionMessages.add(actionRequest, "empty-user");
+					}
+					if (password.equals("")) {
+						SessionMessages.add(actionRequest, "empty-password");
+					}
 				}
 			}
 		}
+		catch (java.lang.SecurityException s) {
+			SessionErrors.add(actionRequest, "auth-error");
+			_log.error(s);
+		}
+		catch (java.rmi.RemoteException r) {
+			SessionErrors.add(actionRequest, "remote-error");
+			_log.error(r);
+		}
 		catch (Exception e) {
 			SessionErrors.add(actionRequest, "error");
+			_log.error(e);
 		}
 
 		// PortalUtil.copyRequestParameters(actionRequest, actionResponse);

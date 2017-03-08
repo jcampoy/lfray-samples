@@ -23,10 +23,12 @@ String message = renderRequest.getAttribute("message") == null ? "" : (String) r
 %>
 
 <liferay-ui:success key="success" message="success" />
-
 <liferay-ui:error key="error" message="error"/>
-
-<liferay-ui:success key="empty-log-message" message="empty-log-message"/>
+<liferay-ui:error key="empty-log-message" message="empty-log-message"/>
+<liferay-ui:error key="empty-user" message="empty-user"/>
+<liferay-ui:error key="empty-password" message="empty-password"/>
+<liferay-ui:error key="remote-error" message="remote-error"/>
+<liferay-ui:error key="auth-error" message="auth-error"/>
 
 <%= message %>
 
@@ -35,6 +37,9 @@ String message = renderRequest.getAttribute("message") == null ? "" : (String) r
 </portlet:actionURL>
 
 <aui:form action="<%= addURL %>" method="post" name="fm">
+
+	<aui:input label="user" name="user" type="text" value="" />
+	<aui:input label="password" name="password" type="password" value="" />
 
 	<aui:input label="write-to-log-file" name="logmessage" type="text" value="" />
 

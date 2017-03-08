@@ -3,7 +3,7 @@
 
 <log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
 
-	<category name="com.jcampoy.liferay.samples.wsclient.portlet">
+	<category name="com.jcampoy.liferay.samples.wsclient">
 		<priority value="DEBUG" />
 	</category>
 
