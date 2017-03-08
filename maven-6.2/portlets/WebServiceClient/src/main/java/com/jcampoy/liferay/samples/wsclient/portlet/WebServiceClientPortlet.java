@@ -47,7 +47,10 @@ public class WebServiceClientPortlet extends MVCPortlet {
 				String password =
 						ParamUtil.getString(actionRequest, "password", "");
 
-				if(!message.equals("")){
+				if (!message.equals("") &&
+					!remoteUser.equals("") &&
+					!password.equals("")) {
+
 					if (_log.isDebugEnabled()) {
 						_log.debug("Calling LogService with message: " + message);
 					}
@@ -56,21 +59,23 @@ public class WebServiceClientPortlet extends MVCPortlet {
 						new LogServiceSoapServiceLocator();
 
 					LogServiceSoap logService =
-						locator.getPlugin_WebServiceSample_LogService(WebServiceClientUtil.getWebServiceSampleURL(remoteUser, password, true));
+						locator.getPlugin_WebServiceSample_LogService(
+							WebServiceClientUtil.getWebServiceSampleURL(
+								remoteUser, password, true));
 
 					logService.info(message);
 
 					SessionMessages.add(actionRequest, "success");
 				}
 				else {
-					if (message.equals("")) {
-						SessionMessages.add(actionRequest, "empty-log-message");
-					}
 					if (remoteUser.equals("")) {
-						SessionMessages.add(actionRequest, "empty-user");
+						SessionErrors.add(actionRequest, "empty-user");
 					}
 					if (password.equals("")) {
-						SessionMessages.add(actionRequest, "empty-password");
+						SessionErrors.add(actionRequest, "empty-password");
+					}
+					if (message.equals("")) {
+						SessionErrors.add(actionRequest, "empty-log-message");
 					}
 				}
 			}

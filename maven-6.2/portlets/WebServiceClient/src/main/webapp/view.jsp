@@ -23,10 +23,12 @@ String message = renderRequest.getAttribute("message") == null ? "" : (String) r
 %>
 
 <liferay-ui:success key="success" message="success" />
+
 <liferay-ui:error key="error" message="error"/>
-<liferay-ui:error key="empty-log-message" message="empty-log-message"/>
+
 <liferay-ui:error key="empty-user" message="empty-user"/>
 <liferay-ui:error key="empty-password" message="empty-password"/>
+<liferay-ui:error key="empty-log-message" message="empty-log-message"/>
 <liferay-ui:error key="remote-error" message="remote-error"/>
 <liferay-ui:error key="auth-error" message="auth-error"/>
 
