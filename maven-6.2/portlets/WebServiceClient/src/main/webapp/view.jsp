@@ -34,7 +34,7 @@ String message = renderRequest.getAttribute("message") == null ? "" : (String) r
 
 <aui:form action="<%= addURL %>" method="post" name="fm">
 
-	<aui:input label="write-to-log-file" name="message" type="text" value="" />
+	<aui:input label="write-to-log-file" name="logmessage" type="text" value="" />
 
 	<aui:button-row>
 		<aui:button type="submit" />
