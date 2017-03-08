@@ -37,7 +37,7 @@
 		<dependency>
 			<groupId>com.jcampoy.liferay.samples</groupId>
 			<artifactId>WebServiceSample-portlet-service</artifactId>
-			<version>${pom.version}</version>
+			<version>${project.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>com.liferay.portal</groupId>

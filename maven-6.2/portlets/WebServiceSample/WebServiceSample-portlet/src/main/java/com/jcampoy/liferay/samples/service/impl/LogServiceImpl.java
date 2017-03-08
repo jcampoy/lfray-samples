@@ -46,5 +46,5 @@ public class LogServiceImpl extends LogServiceBaseImpl {
 		}
 	}
 
-	private static final Log _log = LogFactoryUtil.getLog("WebServiceSample");
+	private static final Log _log = LogFactoryUtil.getLog("LogService >>>");
 }
