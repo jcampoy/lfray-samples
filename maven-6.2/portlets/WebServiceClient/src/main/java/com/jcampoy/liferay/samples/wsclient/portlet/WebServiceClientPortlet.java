@@ -36,13 +36,19 @@ public class WebServiceClientPortlet extends MVCPortlet {
 			String cmd = ParamUtil.getString(actionRequest, Constants.CMD);
 
 			if (cmd.equals("writelog")) {
-				String message = ParamUtil.getString(actionRequest, "logmessage");
+				String message =
+					ParamUtil.getString(actionRequest, "logmessage", "");
 
-				if (_log.isDebugEnabled()) {
-					_log.debug("Calling LogService with message: " + message);
+				if(!message.equals("")){
+					if (_log.isDebugEnabled()) {
+						_log.debug("Calling LogService with message: " + message);
+					}
+		
+					SessionMessages.add(actionRequest, "success");
 				}
-	
-				SessionMessages.add(actionRequest, "success");
+				else {
+					SessionMessages.add(actionRequest, "empty-log-message");
+				}
 			}
 		}
 		catch (Exception e) {

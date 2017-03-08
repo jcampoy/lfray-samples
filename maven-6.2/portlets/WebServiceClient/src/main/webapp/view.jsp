@@ -26,6 +26,8 @@ String message = renderRequest.getAttribute("message") == null ? "" : (String) r
 
 <liferay-ui:error key="error" message="error"/>
 
+<liferay-ui:success key="empty-log-message" message="empty-log-message"/>
+
 <%= message %>
 
 <portlet:actionURL var="addURL">
