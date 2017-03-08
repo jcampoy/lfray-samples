@@ -12,9 +12,9 @@
 	<properties>
 		<liferay.maven.plugin.version>6.2.10.15</liferay.maven.plugin.version>
 		<liferay.version>6.2.10.16</liferay.version>
-		<liferay.auto.deploy.dir>/Users/jose/dev/servers/62x/bundles/deploy</liferay.auto.deploy.dir>
-		<liferay.app.server.deploy.dir>/Users/jose/dev/servers/62x/bundles/tomcat-7.0.62/webapps</liferay.app.server.deploy.dir>
-		<liferay.app.server.lib.global.dir>/Users/jose/dev/servers/62x/bundles/tomcat-7.0.62/lib/ext</liferay.app.server.lib.global.dir>
-		<liferay.app.server.portal.dir>/Users/jose/dev/servers/62x/bundles/tomcat-7.0.62/webapps/ROOT</liferay.app.server.portal.dir>
+		<liferay.auto.deploy.dir>/Users/jose/dev/servers/6210/bundles/deploy</liferay.auto.deploy.dir>
+		<liferay.app.server.deploy.dir>/Users/jose/dev/servers/6210/bundles/tomcat-7.0.62/webapps</liferay.app.server.deploy.dir>
+		<liferay.app.server.lib.global.dir>/Users/jose/dev/servers/6210/bundles/tomcat-7.0.62/lib/ext</liferay.app.server.lib.global.dir>
+		<liferay.app.server.portal.dir>/Users/jose/dev/servers/6210/bundles/tomcat-7.0.62/webapps/ROOT</liferay.app.server.portal.dir>
 	</properties>
 </project>
