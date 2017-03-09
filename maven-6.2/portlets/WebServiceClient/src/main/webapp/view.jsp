@@ -40,8 +40,8 @@ String message = renderRequest.getAttribute("message") == null ? "" : (String) r
 
 <aui:form action="<%= addURL %>" method="post" name="fm">
 
-	<aui:input label="user" name="user" type="text" value="" />
-	<aui:input label="password" name="password" type="password" value="" />
+	<aui:input label="remoteUser" name="user" type="text" value="" />
+	<aui:input label="remotePassword" name="password" type="password" value="" />
 
 	<aui:input label="write-to-log-file" name="logmessage" type="text" value="" />
 
