@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<parent>
+	    <groupId>com.jcampoy.liferay.samples</groupId>
+	    <artifactId>GlobalConfig</artifactId>
+	    <version>1.0-SNAPSHOT</version>
+	    <relativePath>../../parent-pom.xml</relativePath>
+  	</parent>
+
+	<modelVersion>4.0.0</modelVersion>
+
+	<artifactId>WebService</artifactId>
+	<packaging>pom</packaging>
+	<name>WebService</name>
+
+
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>2.5</version>
+				<configuration>
+					<encoding>UTF-8</encoding>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+	<modules>
+		<!-- 
+				Service builder portlet adding a ws
+				http://localhost:8080/WebServiceSample-portlet/api/axis/Plugin_WebServiceSample_LogService?wsdl
+		 -->
+		<module>WebServiceSample</module>
+
+		<!-- portlet client of the ws, also it adds an scheduled job client of the ws -->
+		<module>WebServiceClient</module>
+	</modules>
+</project>
