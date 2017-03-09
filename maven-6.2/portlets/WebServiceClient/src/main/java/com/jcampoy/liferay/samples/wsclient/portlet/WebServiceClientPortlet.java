@@ -1,7 +1,6 @@
 package com.jcampoy.liferay.samples.wsclient.portlet;
 
 import com.jcampoy.liferay.samples.service.http.LogServiceSoap;
-import com.jcampoy.liferay.samples.service.http.LogServiceSoapServiceLocator;
 import com.jcampoy.liferay.samples.wsclient.WebServiceClientUtil;
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
@@ -19,6 +18,11 @@ import javax.portlet.PortletException;
 import javax.portlet.RenderRequest;
 import javax.portlet.RenderResponse;
 
+/**
+ * Liferay scheduled job calling to the LogService Web Service
+ *  
+ * @author José Angel Jiménez
+ */
 public class WebServiceClientPortlet extends MVCPortlet {
 
 	@Override
@@ -54,14 +58,10 @@ public class WebServiceClientPortlet extends MVCPortlet {
 					if (_log.isDebugEnabled()) {
 						_log.debug("Calling LogService with message: " + message);
 					}
-		
-					LogServiceSoapServiceLocator locator =
-						new LogServiceSoapServiceLocator();
 
 					LogServiceSoap logService =
-						locator.getPlugin_WebServiceSample_LogService(
-							WebServiceClientUtil.getWebServiceSampleURL(
-								remoteUser, password, true));
+						WebServiceClientUtil.getLogServiceWS(
+							remoteUser, password);
 
 					logService.info(message);
 

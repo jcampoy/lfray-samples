@@ -1,7 +1,6 @@
 package com.jcampoy.liferay.samples.wsclient.job;
 
 import com.jcampoy.liferay.samples.service.http.LogServiceSoap;
-import com.jcampoy.liferay.samples.service.http.LogServiceSoapServiceLocator;
 import com.jcampoy.liferay.samples.wsclient.WebServiceClientUtil;
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
@@ -14,7 +13,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 /**
  * Liferay scheduled job calling to the LogService Web Service
  *  
- * @author José Ángel Jiménez Campoy
+ * @author José Angel Jiménez
  */
 public class WebServiceClientJob implements MessageListener {
 
@@ -36,13 +35,8 @@ public class WebServiceClientJob implements MessageListener {
 				_log.debug("Calling LogService with message: " + msg);
 			}
 
-			LogServiceSoapServiceLocator locator =
-				new LogServiceSoapServiceLocator();
-
-			LogServiceSoap logService =
-				locator.getPlugin_WebServiceSample_LogService(
-					WebServiceClientUtil.getWebServiceSampleURL(
-						"test", "test", true));
+			// get service using default user and passworkd
+			LogServiceSoap logService = WebServiceClientUtil.getLogServiceWS();
 
 			// call log service
 			logService.info(msg);
