@@ -95,6 +95,7 @@
 			<groupId>com.liferay</groupId>
 			<artifactId>com.liferay.osgi.util</artifactId>
 			<version>3.0.7</version>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.osgi</groupId>
