@@ -1,11 +1,9 @@
 # Legacy Porlet
 
 ## Synopsis
-
-LegacyPortlet illustrates the usage of the ServiceTrackerFactory in a Portlet built in the legacy way (deployed as war file). This example requires connect to LDAP Servers, adding at least one configuration in the Control Panel > Instance Settings - LDAP tab
+LegacyPortlet illustrates the usage of the ServiceTrackerFactory in a Portlet built in the legacy way (deployed as war file). This example requires connect an LDAP Servers, see https://dev.liferay.com/discover/deployment/-/knowledge_base/7-0/ldap
 
 ## Code 
-
 The important code is in `com.jcampoy.liferay.samples.legacy.portlet.LegacyPortlet.java`
 
 **init**
@@ -18,7 +16,6 @@ The important code is in `com.jcampoy.liferay.samples.legacy.portlet.LegacyPortl
 	Use the services obtained throught the service trackers and invoke some service actions
 
 ## Installation
-
 1. Configure custom LIFERAY_DE_HOME path in the pom.xml
 1. Start your LIFERAY DE server
 1. run `mvn clean install`
@@ -27,9 +24,9 @@ The important code is in `com.jcampoy.liferay.samples.legacy.portlet.LegacyPortl
 ## Tests
 1. Log into the portal and add your _Control Panel > Instance Settings > LDAP > Add new LDAP Server_
 1. Go to the home page and add the Legacy Portlet to the page.
-1. Click the button in the portlet view
+1. Click in the button displayed by the portlet view
 
-*Result:*
+*Results:*
 
-* Environment details are written in the log file
-* Server Names list is displayed in the view of the Legacy Portlet
+* LDAP Environment details are written in the log file
+* LDAP Server name list is displayed in the view of the Legacy Portlet
