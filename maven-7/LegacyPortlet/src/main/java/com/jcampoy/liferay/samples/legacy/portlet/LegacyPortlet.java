@@ -123,25 +123,30 @@ public class LegacyPortlet extends MVCPortlet {
 	@SuppressWarnings("unchecked")
 	private List<LDAPServerConfiguration> getLDAPConfigurations(long companyId) {
 
-		if(_ldapServerCfgProviderTracker.getService() == null) {
+		ConfigurationProvider cfgProvider =
+				_ldapServerCfgProviderTracker.getService();
+
+		if( cfgProvider == null) {
 			_log.error("Configuration provider for LDAP Server is not available");
 
 			return new ArrayList<LDAPServerConfiguration>();
 		}
 
-		return _ldapServerCfgProviderTracker
-				.getService().getConfigurations(companyId);
+		return cfgProvider.getConfigurations(companyId);
 	}
 
 	private LdapContext getContext(long ldapServerId, long companyId)
 			throws Exception {
 
-		if ( _portalLDAPTracker.getService() == null) {
+		PortalLDAP portalLDAP = _portalLDAPTracker.getService();
+
+		if ( portalLDAP == null) {
 			_log.error("PortalLDAP service is not available");
+
 			return null;
 		}
 	
-		return _portalLDAPTracker.getService().getContext(ldapServerId, companyId);
+		return portalLDAP.getContext(ldapServerId, companyId);
 	}
 
 	private ServiceTracker<ConfigurationProvider, ConfigurationProvider> 
