@@ -70,6 +70,10 @@ public class PortalWSClientPortlet extends MVCPortlet {
 					DLAppServiceSoap dlAppService =
 						WebServiceClientUtil.getDLAppServiceWS(remoteUser,password);
 					OrderByComparator obc =  new OrderByComparator() {
+						@Override
+						public int compare(Object obj1, Object obj2) {
+							return 0;
+						}
 					} ;
 					
 					for ( FileEntrySoap fe: 
@@ -81,7 +85,7 @@ public class PortalWSClientPortlet extends MVCPortlet {
 									obc)) {
 						_log.debug(fe.getTitle());
 					}
-					
+
 					SessionMessages.add(actionRequest, "success");
 				}
 				else {
