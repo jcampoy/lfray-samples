@@ -1,11 +1,12 @@
 package com.jcampoy.liferay.samples.portlet;
 
 
+import com.jcampoy.liferay.samples.filter.HttpStatusCodeFilter;
+import com.jcampoy.liferay.samples.filter.HttpStatusCodeThreadLocal;
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
 import com.liferay.portal.kernel.servlet.SessionErrors;
 import com.liferay.portal.kernel.servlet.SessionMessages;
-import com.liferay.portal.kernel.util.Constants;
 import com.liferay.portal.kernel.util.ParamUtil;
 import com.liferay.portal.kernel.util.Validator;
 import com.liferay.portal.util.PortalUtil;
@@ -22,7 +23,7 @@ import javax.portlet.RenderResponse;
 /**
  * Liferay scheduled job calling to the LogService Web Service
  *  
- * @author José Angel Jiménez
+ * @author Jose A. Jimenez
  */
 public class HttpStatusCodePortlet extends MVCPortlet {
 
@@ -30,44 +31,18 @@ public class HttpStatusCodePortlet extends MVCPortlet {
 	public void doView(
 			RenderRequest renderRequest, RenderResponse renderResponse)
 		throws IOException, PortletException {
-			
-		String statusCode = ParamUtil.getString(renderRequest, "statusCode");
+	
+		_log.debug("doView");
+		
+		Integer statusCode = ParamUtil.getInteger(renderRequest, "statusCode", Integer.MIN_VALUE);
 
-		_log.debug("VIEW Status Code.. "+statusCode);
-
-		/*if (!Validator.isBlank(statusCode)) {
-			int code = Integer.parseInt(statusCode);
-
-			PortalUtil.getHttpServletResponse(renderResponse).setStatus(code);
-		}*/
-
+		if (statusCode != Integer.MIN_VALUE) {
+			_log.debug("Save CustomStatusCode ... " + statusCode);
+			HttpStatusCodeThreadLocal.setCustomStatus(statusCode);
+			renderRequest.setAttribute(HttpStatusCodeFilter.CUSTOM_STATUS_ATTRIBUTE, statusCode);
+		}
+		
 		super.doView(renderRequest, renderResponse);
-	}
-
-	@Override
-	public void processAction(
-			ActionRequest actionRequest, ActionResponse actionResponse)
-		throws IOException, PortletException {
-
-		try {
-			String statusCode = ParamUtil.getString(actionRequest, "statusCode");
-
-			_log.debug("ACTION Status Code: "+statusCode);
-
-			if (!Validator.isBlank(statusCode)) {
-				int code = Integer.parseInt(statusCode);
-
-				PortalUtil.getHttpServletResponse(actionResponse).setStatus(code);
-
-				SessionMessages.add(actionRequest, "success");
-			}
-		}
-		catch (Exception e) {
-			SessionErrors.add(actionRequest, "error");
-			_log.error(e);
-		}
-
-		PortalUtil.copyRequestParameters(actionRequest, actionResponse);
 	}
 
 	private static final Log _log =

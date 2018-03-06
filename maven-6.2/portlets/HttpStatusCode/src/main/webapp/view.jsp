@@ -14,16 +14,14 @@
  */
 --%>
 
-<%@ taglib uri="http://java.sun.com/portlet_2_0" prefix="portlet" %>
-
 <%@ include file="/init.jsp" %>
 
 <liferay-ui:success key="success" message="success" />
 <liferay-ui:error key="error" message="error"/>
 
-<portlet:actionURL var="actionURL" />
+<liferay-portlet:renderURL var="renderURL"/>
 
-<aui:form action="<%= actionURL %>" method="post" >
+<aui:form action="<%= renderURL %>" method="post" >
 	<aui:select name="statusCode" value="">
 		<aui:option label="200" />
 		<aui:option label="404" />
@@ -31,7 +29,6 @@
 	</aui:select>
 
 	<aui:button-row>
-		<aui:button type="submit" />
+		<aui:button type="submit"/>
 	</aui:button-row>
 </aui:form>
-

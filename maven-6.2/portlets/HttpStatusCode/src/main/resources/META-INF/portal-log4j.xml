@@ -3,8 +3,15 @@
 
 <log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
 
-	<category name="com.jcampoy.liferay.samples.portlet.HttpStatusCodePortlet">
+	<category name="com.jcampoy.liferay.samples">
+		<priority value="ERROR" />
+	</category>
+
+	<category name="com.jcampoy.liferay.samples.filter.HttpStatusCodeFilter">
 		<priority value="DEBUG" />
 	</category>
 
+	<category name="com.jcampoy.liferay.samples.portlet.HttpStatusCodePortlet">
+		<priority value="DEBUG" />
+	</category>
 </log4j:configuration>
