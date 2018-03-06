@@ -1,27 +1,20 @@
 package com.jcampoy.liferay.samples.portlet;
 
-
 import com.jcampoy.liferay.samples.filter.HttpStatusCodeFilter;
 import com.jcampoy.liferay.samples.filter.HttpStatusCodeThreadLocal;
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
-import com.liferay.portal.kernel.servlet.SessionErrors;
-import com.liferay.portal.kernel.servlet.SessionMessages;
 import com.liferay.portal.kernel.util.ParamUtil;
-import com.liferay.portal.kernel.util.Validator;
-import com.liferay.portal.util.PortalUtil;
 import com.liferay.util.bridges.mvc.MVCPortlet;
 
 import java.io.IOException;
 
-import javax.portlet.ActionRequest;
-import javax.portlet.ActionResponse;
 import javax.portlet.PortletException;
 import javax.portlet.RenderRequest;
 import javax.portlet.RenderResponse;
 
 /**
- * Liferay scheduled job calling to the LogService Web Service
+ * Example about adding shared attr and use thread local
  *  
  * @author Jose A. Jimenez
  */
