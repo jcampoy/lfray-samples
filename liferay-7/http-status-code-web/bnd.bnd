@@ -1,0 +1,4 @@
+Bundle-Name: HTTP Status Code Web
+Bundle-SymbolicName: http-status-code-web
+Bundle-Version: 1.0.0
+Export-Package: com.jajcampoy.httpstatuscode.constants
