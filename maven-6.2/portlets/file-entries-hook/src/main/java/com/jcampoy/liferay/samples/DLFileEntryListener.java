@@ -23,6 +23,8 @@ public class DLFileEntryListener extends BaseModelListener<DLFileEntry> {
 
 			List<DLFileVersion> versions = DLFileVersionLocalServiceUtil.getFileVersions(fileEntry.getFileEntryId(), -1);
 
+			_log.info("* BeforeUpdate DLFileEntry " +fileEntry.toString());
+
 			if (versions == null || versions.isEmpty()) {
 				_log.error ("Orphan? -> " + fileEntry.toString());
 				_log.error ("--");
@@ -54,7 +56,7 @@ public class DLFileEntryListener extends BaseModelListener<DLFileEntry> {
 			}
 		}
 		catch (ListenerException le) {
-			_log.error(le);
+			_log.error("StackTrace to analyze possible inconsistence", le);
 		}
 		catch (SystemException e) {
 			_log.error("Unexpected error", e);

@@ -22,6 +22,8 @@ public class DLFileVersionListener extends BaseModelListener<DLFileVersion> {
 		try {
 			boolean logDetails = false;
 
+			_log.info("** BeforeUpdate DLFileVersion " + fileVersion.toString());
+
 			DLFileEntry fileEntry = DLFileEntryLocalServiceUtil.fetchDLFileEntry(fileVersion.getFileEntryId());
 
 			if (fileEntry == null) {
@@ -62,7 +64,7 @@ public class DLFileVersionListener extends BaseModelListener<DLFileVersion> {
 			}
 		}
 		catch (ListenerException le) {
-			_log.error(le);
+			_log.error("StackTrace to analyze possible inconsistence", le);
 		}
 		catch (SystemException e) {
 			_log.error("Unexpected error", e);
