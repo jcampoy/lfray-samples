@@ -26,37 +26,37 @@ public class DLFileEntryListener extends BaseModelListener<DLFileEntry> {
 			_log.info("* BeforeUpdate DLFileEntry " +fileEntry.toString());
 
 			if (versions == null || versions.isEmpty()) {
-				_log.error ("Orphan? -> " + fileEntry.toString());
-				_log.error ("--");
+				_log.info ("Orphan? -> " + fileEntry.toString());
+				_log.info ("--");
 			}
 			else {
 				try {
 					DLFileVersion latestVer = DLFileVersionLocalServiceUtil.getLatestFileVersion(fileEntry.getFileEntryId(), true);
 
 					if (!latestVer.getVersion().equals(fileEntry.getVersion())) {
-						_log.error("Inconsistent? -> DLE(" + fileEntry.getVersion()+ ")" + " DLFV("+latestVer.getVersion()+") for fileEntryId: " + fileEntry.getFileEntryId());
+						_log.info("Inconsistent? -> DLE(" + fileEntry.getVersion()+ ")" + " DLFV("+latestVer.getVersion()+") for fileEntryId: " + fileEntry.getFileEntryId());
 
 						logDetails = true;
 					}
 				}
 				catch (Exception ve) {
-					_log.error("Corrupt? -> " +ve.getMessage() + " for DLFE with fileEntryId(" + fileEntry.getFileEntryId() +") and version ("+fileEntry.getVersion()+")");
+					_log.info("Corrupt? -> " +ve.getMessage() + " for DLFE with fileEntryId(" + fileEntry.getFileEntryId() +") and version ("+fileEntry.getVersion()+")");
 					logDetails = true;
 				}
 			}
 
 			if (logDetails) {
-				_log.error ("DLFE " + fileEntry.toString());
+				_log.info ("DLFE " + fileEntry.toString());
 				
 				for (DLFileVersion fv: versions) {
-					_log.error("  DLFV " + fv.toString());
+					_log.info("  DLFV " + fv.toString());
 				}
 
 				throw new ListenerException("--StackTrace--");
 			}
 		}
 		catch (ListenerException le) {
-			_log.error("StackTrace to analyze possible inconsistence", le);
+			_log.info("StackTrace to analyze possible inconsistence", le);
 		}
 		catch (SystemException e) {
 			_log.error("Unexpected error", e);
