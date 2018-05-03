@@ -16,14 +16,16 @@ public class DLFileEntryListener extends BaseModelListener<DLFileEntry> {
 	Log _log = LogFactoryUtil.getLog(DLFileEntryListener.class);
 
 	@Override
-	public void onBeforeUpdate(DLFileEntry fileEntry) throws ModelListenerException {
+	public void onAfterUpdate(DLFileEntry fileEntry) throws ModelListenerException {
 
 		try {
 			boolean logDetails = false;
 
+			String latestVersion = "-";
+
 			List<DLFileVersion> versions = DLFileVersionLocalServiceUtil.getFileVersions(fileEntry.getFileEntryId(), -1);
 
-			_log.info("* BeforeUpdate DLFileEntry " +fileEntry.toString());
+			_log.info("* onAfterUpdate DLFileEntry " +fileEntry.toString());
 
 			if (versions == null || versions.isEmpty()) {
 				_log.info ("Orphan? -> " + fileEntry.toString());
@@ -33,9 +35,10 @@ public class DLFileEntryListener extends BaseModelListener<DLFileEntry> {
 				try {
 					DLFileVersion latestVer = DLFileVersionLocalServiceUtil.getLatestFileVersion(fileEntry.getFileEntryId(), true);
 
-					if (!latestVer.getVersion().equals(fileEntry.getVersion())) {
-						_log.info("Inconsistent? -> DLE(" + fileEntry.getVersion()+ ")" + " DLFV("+latestVer.getVersion()+") for fileEntryId: " + fileEntry.getFileEntryId());
+					latestVersion = latestVer.getVersion();
 
+					if (!latestVersion.equals(fileEntry.getVersion())) {
+						_log.info("Inconsistent? -> DLE(" + fileEntry.getVersion()+ ")" + " DLFV("+latestVersion+") for fileEntryId: " + fileEntry.getFileEntryId());
 						logDetails = true;
 					}
 				}
@@ -53,6 +56,9 @@ public class DLFileEntryListener extends BaseModelListener<DLFileEntry> {
 				}
 
 				throw new ListenerException("--StackTrace--");
+			}
+			else {
+				_log.info("Ok -> DLE(" + fileEntry.getVersion()+ ")" + " DLFV("+latestVersion+") for fileEntryId: " + fileEntry.getFileEntryId());
 			}
 		}
 		catch (ListenerException le) {
