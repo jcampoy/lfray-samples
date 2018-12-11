@@ -1,0 +1,9 @@
+Bundle-Name: sb-example-datasource-api
+Bundle-SymbolicName: com.liferay.sb.example.api
+Bundle-Version: 1.0.0
+Export-Package:\
+	com.liferay.sb.example.exception,\
+	com.liferay.sb.example.model,\
+	com.liferay.sb.example.service,\
+	com.liferay.sb.example.service.persistence
+-includeresource: META-INF/service.xml=../sb-example-datasource-service/service.xml

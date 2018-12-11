@@ -1,0 +1,5 @@
+Bundle-Name: sb-example-datasource-service
+Bundle-SymbolicName: com.liferay.sb.example.service
+Bundle-Version: 1.0.0
+Liferay-Require-SchemaVersion: 1.0.0
+Liferay-Service: true

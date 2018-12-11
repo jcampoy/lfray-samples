@@ -1,0 +1,18 @@
+dependencies {
+	compileOnly group: "biz.aQute.bnd", name: "biz.aQute.bndlib", version: "3.5.0"
+	compileOnly group: "com.liferay", name: "com.liferay.portal.spring.extender", version: "2.0.0"
+	compileOnly group: "com.liferay.portal", name: "com.liferay.portal.kernel", version: "2.0.0"
+	compileOnly project(":modules:sb-example-datasource:sb-example-datasource-api")
+	portal fileTree(dir: liferay.liferayHome.absolutePath + "/tomcat-8.0.32/lib", include: '**/*.jar')
+	portal fileTree(dir: liferay.liferayHome.absolutePath + "/tomcat-8.0.32/webapps/ROOT/WEB-INF/lib", include: '*.jar')
+}
+
+buildService {
+	apiDir = "../sb-example-datasource-api/src/main/java"
+}
+
+buildDB {
+	databaseTypes = "oracle,mysql,postgresql"
+}
+
+group = "com.liferay.sb.example"
