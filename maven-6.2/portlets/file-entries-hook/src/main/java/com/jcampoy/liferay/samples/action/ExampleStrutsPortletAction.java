@@ -11,16 +11,18 @@ import javax.portlet.RenderResponse;
 import javax.portlet.ResourceRequest;
 import javax.portlet.ResourceResponse;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 public class ExampleStrutsPortletAction extends BaseStrutsAction {
 
 	public String execute(
             HttpServletRequest request, HttpServletResponse response)
                     throws Exception {
 
-
 		System.out.println("execute /sample/sampletest");
 
-		return return "/portal/sample.jsp";
+		return "/sample.jsp";
 	}
 
 }
