@@ -5,7 +5,7 @@
 <portal-properties>portal.properties</portal-properties>
 <custom-jsp-dir>/custom_jsps</custom-jsp-dir>
 <struts-action>
-    <struts-action-path>/sample/sampletest</struts-action-path>
+    <struts-action-path>/portal/sample</struts-action-path>
     <struts-action-impl>com.jcampoy.liferay.samples.action.ExampleStrutsPortletAction</struts-action-impl>
 </struts-action>
 </hook>
