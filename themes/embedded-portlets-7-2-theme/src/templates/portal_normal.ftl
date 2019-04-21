@@ -22,6 +22,16 @@
 
 <div class="container-fluid" id="wrapper">
 	<header id="banner" role="banner">
+				<#assign preferences = freeMarkerPortletPreferences.getPreferences({"portletSetupPortletDecoratorId": "barebone", "destination": "/search"}) />
+
+		<div class="autofit-col autofit-col-expand">
+	
+				<div class="justify-content-md-end mr-4 navbar-form" role="search">
+					<@liferay.search_bar default_preferences="${preferences}" />
+				</div>
+
+		</div>
+
 		<div id="heading">
 			<h1 class="site-title">
 				<a class="${logo_css_class}" href="${site_default_url}" title="<@liferay.language_format arguments="${site_name}" key="go-to-x" />">
@@ -65,10 +75,26 @@
 		</#if>
 	</section>
 	<div id="loquesea">
+
+		com_liferay_journal_content_web_portlet_JournalContentPortlet_INSTANCE_SupportT${plid}
 		<@liferay_portlet["runtime"]
-			instanceId="Support${plid}"
+			instanceId="SupportT${plid}"
 			portletName="com_liferay_journal_content_web_portlet_JournalContentPortlet"
 		/>
+
+<br/>dashboardHeaderDesktop
+				<@liferay_portlet["runtime"]
+					defaultPreferences="${freeMarkerPortletPreferences}"
+					instanceId="dashboardHeaderDesktop"
+				    portletName="com_liferay_journal_content_web_portlet_JournalContentPortlet"
+				/>
+<br/>dashboardHeaderDesktop2
+				<@liferay_portlet["runtime"]
+					defaultPreferences="${freeMarkerPortletPreferences}"
+					instanceId="dashboardHeaderDesktop2"
+				    portletName="com_liferay_journal_content_web_portlet_JournalContentPortlet"
+				/>
+
 	</div>
 	<footer id="footer" role="contentinfo">
 		<p class="powered-by">
